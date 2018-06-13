@@ -6,7 +6,9 @@ const http = require('http');
 const bodyParser = require('body-parser');
 
 // Get our API routes
-const api = require('./server/routes/api');
+const customersRoutes = require('./server/routes/customersApi');
+const companiesRoutes = require('./server/routes/companiesApi');
+const commentsRoutes = require('./server/routes/commentsApi');
 
 const app = express();
 
@@ -20,7 +22,9 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 
 // Set our api routes
-app.use('/', api);
+app.use('/customers', customersRoutes);
+app.use('/companies', companiesRoutes);
+// app.use('/comments', commentsRoutes);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

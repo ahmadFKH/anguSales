@@ -1,0 +1,19 @@
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="First Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Last Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Company Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone Number">
+  </mat-form-field>
+  <button>Add Customer</button>
+</div>

@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 // Set our api routes
 app.use('/customers', customersRoutes);
 app.use('/companies', companiesRoutes);
-// app.use('/comments', commentsRoutes);
+app.use('/comments', commentsRoutes);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

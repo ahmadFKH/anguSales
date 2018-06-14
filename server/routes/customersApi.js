@@ -9,56 +9,56 @@ const Company = require('../dataAccess/company');
 //       "firstName": "Ina",
 //       "lastName": "Jefferson",
 //       "company_name": "UPLINX",
-//       "email": "ina.jefferson@undefined.co.uk",
+//       "email": "lula.bentley@retrotex.name",
 //       "phone": "+1 (813) 463-3562"
 //     },
 //     {
 //       "firstName": "Banks",
 //       "lastName": "Coffey",
 //       "company_name": "UPLINX",
-//       "email": "banks.coffey@undefined.info",
+//       "email": "whitehead.singleton@navir.ca",
 //       "phone": "+1 (971) 461-2883"
 //     },
 //     {
 //       "firstName": "Norman",
 //       "lastName": "Horn",
 //       "company_name": "KOG",
-//       "email": "norman.horn@undefined.biz",
+//       "email": "roberson.barrett@corpulse.us",
 //       "phone": "+1 (849) 483-2079"
 //     },
 //     {
 //       "firstName": "Alissa",
 //       "lastName": "Cantrell",
 //       "company_name": "KOG",
-//       "email": "alissa.cantrell@undefined.tv",
+//       "email": "leanne.romero@moltonic.io",
 //       "phone": "+1 (952) 470-3621"
 //     },
 //     {
 //       "firstName": "Annette",
 //       "lastName": "Hebert",
 //       "company_name": "CINASTER",
-//       "email": "annette.hebert@undefined.org",
+//       "email": "michele.ortiz@unq.net",
 //       "phone": "+1 (858) 546-3177"
 //     },
 //     {
 //       "firstName": "Poole",
 //       "lastName": "Knox",
 //       "company_name": "CINASTER",
-//       "email": "poole.knox@undefined.com",
+//       "email": "little.jordan@animalia.biz",
 //       "phone": "+1 (810) 591-3213"
 //     },
 //     {
 //       "firstName": "Sheila",
 //       "lastName": "Barnett",
 //       "company_name": "CINASTER",
-//       "email": "sheila.barnett@undefined.us",
+//       "email": "mcclain.washington@acruex.me",
 //       "phone": "+1 (990) 429-3235"
 //     },
 //     {
 //       "firstName": "Willa",
 //       "lastName": "Hartman",
 //       "company_name": "TSUNAMIA",
-//       "email": "willa.hartman@undefined.ca",
+//       "email": "susan.beasley@senmao.biz",
 //       "phone": "+1 (823) 453-2071"
 //     }
 //   ]);

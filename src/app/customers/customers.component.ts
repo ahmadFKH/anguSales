@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import { CustomerService } from '../customer.service'
+import Customer from '../models/customer'
 
 @Component({
   selector: 'app-customers',
@@ -9,7 +10,7 @@ import { CustomerService } from '../customer.service'
 })
 export class CustomersComponent {
 
-  displayedColumns = ['position', 'firstname', 'lastname', 'email', 'phone', 'action'];
+  displayedColumns = ['firstname', 'lastname', 'email', 'phone', 'action'];
   dataSource : any;
 
   constructor(private customerService: CustomerService) { }

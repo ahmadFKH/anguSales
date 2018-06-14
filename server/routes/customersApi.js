@@ -3,6 +3,8 @@ const router = express.Router()
 const Customer = require('../dataAccess/customer');
 const Sequelize = require('sequelize');
 const Company = require('../dataAccess/company');
+const Comment = require('../dataAccess/comments');
+
 
 // let CUSTOMERS = JSON.stringify([
 //     {
@@ -75,7 +77,7 @@ const Company = require('../dataAccess/company');
 
 
 router.get('/', (req, res) => {
-    Customer.findAll({include: [Company]}).then(data => {
+    Customer.findAll({ include: [Company] }).then(data => {
         console.log(data);
         res.send(JSON.stringify(data));
     })
@@ -84,9 +86,41 @@ router.get('/', (req, res) => {
 router.get('/:email', (req, res) => {
     let customerEmail = req.params.email;
     console.log('we are here' + customerEmail);
-    Customer.find({where: {email : customerEmail}, include:[Company]})
-    .then(data => {
-        res.send(JSON.stringify(data));
-    });
+    Customer.find({ where: { email: customerEmail }, include: [Company] })
+        .then(data => {
+            res.send(JSON.stringify(data));
+        });
+})
+
+router.post('/add-customer', (req, res) => {
+    var newCustomer = req.body.customer;
+    console.log("------------" + newCustomer);
+    Customer.create(newCustomer);
+    res.send(JSON.stringify(newCustomer));
+});
+
+router.delete('/:email', (req, res) => {
+    var customerEmail = req.params.email;
+    console.log('....................................');
+    console.log(customerEmail);
+    console.log('....................................');
+    Comment.destroy({
+        where: {
+            email: customerEmail
+        }        
+    }).then((data) => {
+        console.log("data deleted:" + data);
+    }), (err) => {
+        console.error(err);
+    }
+    Customer.destroy({
+        where: {
+            email: customerEmail
+        }
+    }).then((data) => {
+        console.log("data deleted:" + data);
+    }), (err) => {
+        console.error(err);
+    }
 })
 module.exports = router;

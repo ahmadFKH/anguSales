@@ -15,7 +15,12 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { CommentsComponent } from './comments/comments.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatInputModule} from '@angular/material/input';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { CustomerService } from './customer.service';
+import { HttpClientModule } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -35,9 +40,12 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatTableModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    HttpClientModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

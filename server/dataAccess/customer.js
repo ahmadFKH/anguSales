@@ -12,5 +12,6 @@ let Customer = connect.define('customer', {
 })
 
 Customer.belongsTo(Company, {foreignKey: 'company_name'});
+Company.hasMany(Customer, {foreignKey: 'company_name'})
 
 module.exports = Customer;

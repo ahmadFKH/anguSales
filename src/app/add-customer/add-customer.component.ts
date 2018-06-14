@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
+import Customer from '../models/customer';
+import { CustomerService } from '../customer.service';
 
 
 @Component({
@@ -9,17 +11,22 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class AddCustomerComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  customer: Customer = new Customer();
+  
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
-  constructor() { }
+  constructor(private customerService : CustomerService) { }
 
   ngOnInit() {
   }
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
+  submit() {
+    this.customerService.addCustomer(this.customer).subscribe((data) => {
+      this.customer = data;
+    })
   }
 
 }

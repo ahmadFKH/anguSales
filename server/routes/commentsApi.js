@@ -93,7 +93,9 @@ router.get('/', (req, res) => {
 
 router.get('/:email', (req, res) => {
     let customerEmail = req.params.email;
-    Comment.find({where: {customer_email : customerEmail}})
+    console.log('------------------');
+    console.log('customerEmail');
+    Comment.findAll({where: {customer_email : customerEmail}})
     .then(data => {
         res.send(JSON.stringify(data));
     });

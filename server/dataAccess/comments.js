@@ -10,5 +10,6 @@ let Comment = connect.define('comment', {
 })
 
 Comment.belongsTo(Customer, {foreignKey: 'customer_email'});
+Customer.hasMany(Comment, {foreignKey: 'customer_email'})
 
 module.exports = Comment;

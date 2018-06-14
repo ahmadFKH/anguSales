@@ -2,13 +2,13 @@
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{ customer.lastName }}</mat-card-title>
-    <mat-card-subtitle>{{ customer.firsttName }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ customer.firstName }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>Email:   {{ customer.email }} </p>
     <p>Phone:   {{ customer.phone }} </p>
     <p>Company:   {{ customer.company_name }} </p>
-    <div *ngFor = "let comment of comments">
+    <div *ngFor = "let comment of comments">Comments:
         <mat-card-content>
             <p> Date: {{ comment.date }} </p>
             <p>       {{ comment.text }} </p>
@@ -16,7 +16,7 @@
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Remove</button>
-    <button mat-button>Comment</button>
+    <button mat-button color="warn" (click) = "removeCustomer(customer.email)" routerLink = "" >Remove</button>
+    <button mat-button color="primary">Add Comment</button>
   </mat-card-actions>
 </mat-card>

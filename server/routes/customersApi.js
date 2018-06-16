@@ -8,71 +8,52 @@ const Comment = require('../dataAccess/comments');
 
 // let CUSTOMERS = JSON.stringify([
 //     {
-//       "firstName": "Ina",
-//       "lastName": "Jefferson",
-//       "company_name": "UPLINX",
-//       "email": "lula.bentley@retrotex.name",
-//       "phone": "+1 (813) 463-3562"
-//     },
-//     {
-//       "firstName": "Banks",
-//       "lastName": "Coffey",
-//       "company_name": "UPLINX",
-//       "email": "whitehead.singleton@navir.ca",
-//       "phone": "+1 (971) 461-2883"
-//     },
-//     {
-//       "firstName": "Norman",
-//       "lastName": "Horn",
-//       "company_name": "KOG",
-//       "email": "roberson.barrett@corpulse.us",
-//       "phone": "+1 (849) 483-2079"
-//     },
-//     {
-//       "firstName": "Alissa",
-//       "lastName": "Cantrell",
-//       "company_name": "KOG",
-//       "email": "leanne.romero@moltonic.io",
-//       "phone": "+1 (952) 470-3621"
-//     },
-//     {
-//       "firstName": "Annette",
-//       "lastName": "Hebert",
-//       "company_name": "CINASTER",
-//       "email": "michele.ortiz@unq.net",
-//       "phone": "+1 (858) 546-3177"
-//     },
-//     {
-//       "firstName": "Poole",
-//       "lastName": "Knox",
-//       "company_name": "CINASTER",
-//       "email": "little.jordan@animalia.biz",
-//       "phone": "+1 (810) 591-3213"
-//     },
-//     {
-//       "firstName": "Sheila",
-//       "lastName": "Barnett",
-//       "company_name": "CINASTER",
-//       "email": "mcclain.washington@acruex.me",
-//       "phone": "+1 (990) 429-3235"
-//     },
-//     {
-//       "firstName": "Willa",
-//       "lastName": "Hartman",
+//       "firstName": "Heidi",
+//       "lastName": "Schwartz",
 //       "company_name": "TSUNAMIA",
-//       "email": "susan.beasley@senmao.biz",
-//       "phone": "+1 (823) 453-2071"
+//       "email": "heidi.schwartz@oceanica.com",
+//       "phone": "(822) 471-2513"
+//     },
+//     {
+//       "firstName": "Buchanan",
+//       "lastName": "Flynn",
+//       "company_name": "TSUNAMIA",
+//       "email": "buchanan.flynn@quizka.tv",
+//       "phone": "(907) 526-3826"
+//     },
+//     {
+//       "firstName": "Nanette",
+//       "lastName": "Mcgowan",
+//       "company_name": "TSUNAMIA",
+//       "email": "nanette.mcgowan@plasmosis.io",
+//       "phone": "(990) 468-2024"
+//     },
+//     {
+//       "firstName": "Phoebe",
+//       "lastName": "Burns",
+//       "company_name": "UPLINX",
+//       "email": "phoebe.burns@strozen.biz",
+//       "phone": "(938) 461-3823"
+//     },
+//     {
+//       "firstName": "Frost",
+//       "lastName": "Frank",
+//       "company_name": "UPLINX",
+//       "email": "frost.frank@extrawear.me",
+//       "phone": "(964) 481-3219"
 //     }
 //   ]);
 // CUSTOMERS = JSON.parse(CUSTOMERS);
 
 // for(var i = 0; i < CUSTOMERS.length; i++) {
-//     Customer.create(CUSTOMERS[i]).then((data) => {
+//     Customer.create(CUSTOMERS[i])
+//     .then((data) => {
 //         console.log(data);
-//     }), (error) => {
-//         console.error(error);
-//     }
-
+//     }) 
+//     .catch(function(err) {
+//         // print the error details
+//         console.error(err);
+//     });
 // }
 
 
@@ -107,8 +88,10 @@ router.delete('/:email', (req, res) => {
     console.log('....................................');
     Comment.destroy({
         where: {
-            email: customerEmail
-        }        
+            customer_email: customerEmail
+        }, include: [{
+            model: Customer
+        }]       
     }).then((data) => {
         console.log("data deleted:" + data);
     }), (err) => {
@@ -120,6 +103,7 @@ router.delete('/:email', (req, res) => {
         }
     }).then((data) => {
         console.log("data deleted:" + data);
+        res.send(JSON.stringify(data));
     }), (err) => {
         console.error(err);
     }

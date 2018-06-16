@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { CustomerService } from '../customer.service'
 import Customer from '../models/customer'
 
@@ -10,23 +10,34 @@ import Customer from '../models/customer'
 })
 export class CustomersComponent {
 
-  displayedColumns = ['firstname', 'lastname', 'email', 'phone', 'action'];
-  dataSource : any;
+  displayedColumns = ['firstname', 'lastname', 'company', 'phone', 'action'];
+  dataSource: any;
 
   constructor(private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.customerService.getCustomers();
-    this.customerService.customersUpdate.subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-    });
-
+    this.setCustomers();
   }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  removeCustomer(email: string) {
+    this.customerService.removeCustomer(email).subscribe((data) => {
+      console.log("we returned here!!")
+      console.log(data);
+      this.setCustomers();
+      // this.router.navigate['/']  ;
+    });
+  }
+  setCustomers() {
+    this.customerService.getCustomers();
+    this.customerService.customersUpdate.subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
   }
 }
 // const ELEMENT_DATA: Element[] = [

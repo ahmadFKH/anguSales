@@ -26,7 +26,7 @@ export class AddCustomerComponent implements OnInit {
   submit() {
     this.customerService.addCustomer(this.customer).subscribe((data) => {
       this.customer = data;
-      this.router.navigate['']  ;
+      this.router.navigate(['']);
     })
   }
 

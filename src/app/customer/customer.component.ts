@@ -4,7 +4,6 @@ import { CommentService } from '../comment.service';
 import Customer from '../models/customer';
 import Comment from '../models/comment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { runInNewContext } from 'vm';
 
 @Component({
   selector: 'app-customer',
@@ -36,7 +35,8 @@ export class CustomerComponent implements OnInit {
 
   removeCustomer(email: string) {
     this.customerService.removeCustomer(email).subscribe((data) => {
-    // this.router.navigate['/']  ;
+      console.log(data);
+      this.router.navigate(['']);
     });
   }
 

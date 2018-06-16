@@ -95,8 +95,9 @@ router.get('/:email', (req, res) => {
 router.post('/add-customer', (req, res) => {
     var newCustomer = req.body.customer;
     console.log("------------" + newCustomer);
-    Customer.create(newCustomer);
-    res.send(JSON.stringify(newCustomer));
+    Customer.create(newCustomer).then((data) => {
+        res.send(JSON.stringify(data));
+    })
 });
 
 router.delete('/:email', (req, res) => {

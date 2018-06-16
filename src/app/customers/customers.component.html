@@ -35,8 +35,10 @@
     <!-- Actions Column -->
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let element"> 
-          <button (click) = "removeCustomer(element.email)">Remove</button> 
+        <mat-cell *matCellDef="let element" > 
+          <button mat-icon-button color="warn" (click) = "removeCustomer(element.email)">
+            <i class="material-icons">delete</i>
+          </button>
         </mat-cell>
       </ng-container>
 

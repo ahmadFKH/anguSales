@@ -21,6 +21,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { CustomerService } from './customer.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from "@angular/material/icon";
+import { CommentService } from './comment.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +45,10 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatInputModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
-  providers: [CustomerService],
+  providers: [CustomerService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

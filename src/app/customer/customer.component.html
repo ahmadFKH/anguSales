@@ -5,18 +5,33 @@
     <mat-card-subtitle>{{ customer.firstName }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>Email:   {{ customer.email }} </p>
-    <p>Phone:   {{ customer.phone }} </p>
-    <p>Company:   {{ customer.company_name }} </p>
-    <div *ngFor = "let comment of comments">Comments:
-        <mat-card-content>
-            <p> Date: {{ comment.date }} </p>
-            <p>       {{ comment.text }} </p>
-        </mat-card-content>
+    <p>
+      <strong>Email:</strong> {{ customer.email }} </p>
+    <p>
+      <strong>Phone:</strong> {{ customer.phone }} </p>
+    <p>
+      <strong>Company:</strong> {{ customer.company_name }} </p>
+    <p *ngIf="comments.length > 0"> 
+      <strong>Comments:</strong>
+    </p>
+    <br>
+    <div *ngFor="let comment of comments">
+      <mat-card-content>
+        <p>
+          <strong>Date: {{ comment.date }}</strong>
+        </p>
+        <p> {{ comment.text }} </p>
+      </mat-card-content>
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button color="warn" (click) = "removeCustomer(customer.email)" routerLink = "" >Remove</button>
-    <button mat-button color="primary">Add Comment</button>
+    <button class="deleteButton" mat-button color="warn" (click)="removeCustomer(customer.email)" routerLink="">Remove</button>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="commentText" placeholder="add comment ..." name="Commenr"><br>
+      </mat-form-field>
+      <button mat-button color="primary" (click)="addComment(commentText)">Add Comment</button>
+    </form>
+
   </mat-card-actions>
 </mat-card>

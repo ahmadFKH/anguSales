@@ -101,4 +101,13 @@ router.get('/:email', (req, res) => {
     });
 });
 
+router.post('/add-comment', (req, res) => {
+    var newComment = req.body.comment;
+    console.log("------------");
+    console.log(newComment);
+    Comment.create(newComment).then((data) => {
+        res.send(JSON.stringify(newComment));
+    });
+});
+
   module.exports = router;

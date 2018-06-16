@@ -1,9 +1,6 @@
 export default class Comment {
-    private comment_id: number;
-    private date: Date;
-    private text: string;
-    constructor(text: string, date: Date) {
-        this.text = text;
-        this.date = date;
-    }
+    public comment_id: string;
+    public date: Date;
+    public text: string;
+    public customer_email: string;
 }

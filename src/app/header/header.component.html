@@ -1,7 +1,8 @@
 <mat-toolbar>
-  <span>Customers</span>
-    <span class="buttonClass"><button mat-fab color="accent" routerLink = "add-customer"><i class="material-icons">person_add</i></button>
-    <button mat-fab color="primary" routerLink = "" ><i class="material-icons">home</i></button></span>
+  <h2>Customers</h2>
+    <span class="buttonClass"><button mat-fab color="accent" matTooltip = "New Customer" [matTooltipPosition]="position" routerLink = "add-customer"><i class="material-icons">person_add</i></button>
+    <button mat-fab color="primary" matTooltip = "Home Page" [matTooltipPosition]="position" routerLink = "" ><i class="material-icons">home</i></button>
+    <button mat-fab color="basic" matTooltip = "Show Companies" [matTooltipPosition]="position" routerLink = "company"><i class="material-icons">work</i></button></span>
 </mat-toolbar>
 
 

@@ -1,0 +1,20 @@
+<div>
+    <h2 mat-dialog-title>Update Customer</h2>
+    <mat-dialog-content>
+      <p><strong>First Name:</strong>  {{data.firstName}}</p>
+      <p><strong>Last Name:</strong>  {{data.lastName}}</p>
+      <p><strong>Email:</strong>  {{data.email}}</p>
+      <mat-form-field><strong>Phone: </strong>
+        <input matInput [(ngModel)]="data.phone">
+      </mat-form-field>
+      <mat-form-field><strong>Company: </strong>
+        <input matInput [(ngModel)]="data.company_name">
+      </mat-form-field>
+  
+      <mat-dialog-actions>
+        <br>
+        <button mat-raised-button (click)="onCloseNo()">Cancel</button>
+        <button mat-raised-button (click)="onCloseOk()">Submit</button>
+      </mat-dialog-actions>
+    </mat-dialog-content>
+  </div>

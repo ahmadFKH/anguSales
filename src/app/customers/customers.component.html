@@ -36,8 +36,9 @@
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let element" > 
-          <button mat-icon-button color="warn" (click) = "removeCustomer(element.email)">
-            <i class="material-icons">delete</i>
+          <button mat-icon-button color="warn" matTooltip = "Remove" [matTooltipPosition]="position"  (click) = "removeCustomer(element.email)"><i class="material-icons">delete</i></button>
+              <button mat-icon-button color="accent" matTooltip = "Edit" [matTooltipPosition]="position2"  (click) = "openDialog(element)">
+            <i class="material-icons">edit</i>
           </button>
         </mat-cell>
       </ng-container>

@@ -59,7 +59,7 @@ const Comment = require('../dataAccess/comments');
 
 router.get('/', (req, res) => {
     Customer.findAll({ include: [Company] }).then(data => {
-        console.log(data);
+        //console.log(data);
         res.send(JSON.stringify(data));
     })
 });
@@ -75,7 +75,7 @@ router.get('/:email', (req, res) => {
 
 router.post('/add-customer', (req, res) => {
     var newCustomer = req.body.customer;
-    console.log("------------" + newCustomer);
+    //console.log("------------" + newCustomer);
     Customer.create(newCustomer).then((data) => {
         res.send(JSON.stringify(data));
     })
@@ -83,17 +83,17 @@ router.post('/add-customer', (req, res) => {
 
 router.delete('/:email', (req, res) => {
     var customerEmail = req.params.email;
-    console.log('....................................');
-    console.log(customerEmail);
-    console.log('....................................');
+    // console.log('....................................');
+    // console.log(customerEmail);
+    // console.log('....................................');
     Comment.destroy({
         where: {
             customer_email: customerEmail
         }, include: [{
             model: Customer
-        }]       
+        }]
     }).then((data) => {
-        console.log("data deleted:" + data);
+        //console.log("data deleted:" + data);
     }), (err) => {
         console.error(err);
     }
@@ -102,10 +102,25 @@ router.delete('/:email', (req, res) => {
             email: customerEmail
         }
     }).then((data) => {
-        console.log("data deleted:" + data);
+        //console.log("data deleted:" + data);
         res.send(JSON.stringify(data));
     }), (err) => {
         console.error(err);
     }
+})
+
+router.put('/:email', (req, res) => {
+    Customer.find({
+        where: {
+            email: req.params.email
+        }
+    }).then((data) => {
+        console.log(data);
+        data.company_name = req.body.customer.company_name
+        data.phone = req.body.customer.phone
+        data.save().then((result)=> {
+            res.send(JSON.stringify(result));
+        }) 
+    })
 })
 module.exports = router;

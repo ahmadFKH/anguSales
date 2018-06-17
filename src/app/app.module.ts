@@ -23,6 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from "@angular/material/icon";
 import { CommentService } from './comment.service';
+import { CompanyService } from './company.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { CompanyComponent } from './company/company.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,10 @@ import { CommentService } from './comment.service';
     CustomerComponent,
     SearchComponent,
     AddCustomerComponent,
-    CommentsComponent
+    CommentsComponent,
+    CompanyComponent,
+    DialogComponent,
+    UpdateDialogComponent
     ],
   imports: [
     BrowserModule,
@@ -46,9 +55,12 @@ import { CommentService } from './comment.service';
     MatInputModule,
     HttpClientModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
-  providers: [CustomerService, CommentService],
+  entryComponents: [DialogComponent,UpdateDialogComponent],
+  providers: [CustomerService, CommentService, CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

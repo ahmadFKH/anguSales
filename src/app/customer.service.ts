@@ -45,4 +45,12 @@ c
     return this.http.delete('http://localhost:3000/customers/'+ email);
   }
 
+  editCustomer(customer: Customer) {
+    let customerObject = {
+      phone : customer.phone,
+      company_name : customer.company_name
+    }
+    return this.http.put<Customer>('http://localhost:3000/customers/' + customer.email, {customer : customerObject});
+  }
+
 }

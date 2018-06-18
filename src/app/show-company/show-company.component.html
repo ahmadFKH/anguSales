@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+  <div>
+    <p><strong>Name:</strong> {{ company.name }} </p> <br>
+    <p><strong>Address:</strong> {{ company.address }} </p> <br>
+    <p><strong>Country:</strong> {{ company.country }} </p> <br>
+  </div>
+  <hr>
+  <p *ngIf="customers.length > 0">
+    <strong>Customers:</strong>
+  </p>
+  <br>
+  <div *ngFor="let customer of customers">
+    <mat-card-content>
+      <p>
+        <strong>Name: </strong>{{ customer.firstName }} {{ customer.lastName }}</p>
+      <p>
+        <strong>Email: </strong> {{ customer.email }} </p>
+      <p>
+        <strong>Phone: </strong> {{ customer.phone }} </p>
+    </mat-card-content>
+  </div>
+</mat-card>

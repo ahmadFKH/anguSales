@@ -30,12 +30,11 @@ export class CustomersComponent {
   }
 
   removeCustomer(email: string) {
-    this.customerService.removeCustomer(email).subscribe((data) => {
-      console.log("we returned here!!")
-      console.log(data);
-      this.setCustomers();
+    this.customerService.removeCustomer(email);
+      this.customerService.customersUpdate.subscribe(data => {
+        this.dataSource = new MatTableDataSource(data);  
+      })
       // this.router.navigate['/']  ;
-    });
   }
 
   openDialog(customer: Customer): void {

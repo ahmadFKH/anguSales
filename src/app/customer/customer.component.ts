@@ -12,12 +12,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CustomerComponent implements OnInit {
 
-  public customer : Customer = new Customer();
-  public comments  : Comment[] = [];
-  public comment : Comment = new Comment();
-  private commentText : string;
+  public customer: Customer = new Customer();
+  public comments: Comment[] = [];
+  public comment: Comment = new Comment();
+  private commentText: string;
 
-  constructor(private commentService: CommentService  ,private customerService: CustomerService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private commentService: CommentService, private customerService: CustomerService, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit() {
@@ -34,11 +34,12 @@ export class CustomerComponent implements OnInit {
   }
 
   removeCustomer(email: string) {
-    this.customerService.removeCustomer(email).subscribe((data) => {
+    this.customerService.removeCustomer(email);
+    this.customerService.customersUpdate.subscribe((data) => {
       console.log(data);
       this.router.navigate(['']);
-    });
-  }
+    })
+  };
 
   addComment(text: string) {
     let newComment = new Comment();
@@ -49,6 +50,17 @@ export class CustomerComponent implements OnInit {
     this.commentService.addComment(newComment).subscribe((data) => {
       this.comment = data;
       this.comments.push(this.comment);
+    })
+  }
+
+  deleteComment(id : string) { 
+    this.commentService.deleteComment(id).subscribe((data) => {
+      for (var i=0; i < this.comments.length; i++) {
+        if (this.comments[i].comment_id == id) {
+          this.comments.splice(i,1);
+        }
+      }
+      
     })
   }
 

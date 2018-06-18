@@ -73,6 +73,18 @@ router.get('/:email', (req, res) => {
         });
 })
 
+router.get('/findByCompany/:company_name', (req, res) => {
+    let customerCompany = req.params.company_name;
+    console.log('we are here' + customerCompany);
+    Customer.findAll({ where: { company_name: customerCompany }, include: [Company]  })
+        .then(data => {
+            res.send(JSON.stringify(data));
+        }).catch(err => {
+            console.error(err);
+            throw error;
+        })
+})
+
 router.post('/add-customer', (req, res) => {
     var newCustomer = req.body.customer;
     //console.log("------------" + newCustomer);
@@ -118,9 +130,9 @@ router.put('/:email', (req, res) => {
         console.log(data);
         data.company_name = req.body.customer.company_name
         data.phone = req.body.customer.phone
-        data.save().then((result)=> {
+        data.save().then((result) => {
             res.send(JSON.stringify(result));
-        }) 
+        })
     })
 })
 module.exports = router;

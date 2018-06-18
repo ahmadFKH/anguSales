@@ -11,16 +11,20 @@
       <strong>Phone:</strong> {{ customer.phone }} </p>
     <p>
       <strong>Company:</strong> {{ customer.company_name }} </p>
+    <hr>
     <p *ngIf="comments.length > 0"> 
       <strong>Comments:</strong>
     </p>
     <br>
     <div *ngFor="let comment of comments">
-      <mat-card-content>
+      <mat-card-content class="comments">
         <p>
           <strong>Date: {{ comment.date }}</strong>
         </p>
         <p> {{ comment.text }} </p>
+        <button  class="delete-comment"  mat-mini-fab color = "warn" (click) = "deleteComment(comment.comment_id)">
+          <mat-icon >delete</mat-icon>
+        </button>
       </mat-card-content>
     </div>
   </mat-card-content>

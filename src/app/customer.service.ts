@@ -24,25 +24,38 @@ c
   }
 
   getCustomers() {
-    const objservble = this.http.get<Customer[]>('http://localhost:3000/customers');
+    const objservble = this.http.get<Customer[]>('/customers');
     objservble.subscribe((res) => {
       this.allCustomers = res;
       this.customersSubject.next(this.allCustomers);
     });
   }
+  getCustomersByCompany(name : string) {
+    return this.http.get<Customer[]>('/customers/findByCompany/' + name);
+
+  }
   getCustomer(email: string) {
-    const observble = this.http.get<Customer>('http://localhost:3000/customers/' + email);
+    const observble = this.http.get<Customer>('/customers/' + email);
     observble.subscribe((res) => {
       this.customerSubject.next(res);
     });
   }
 
   addCustomer(newCustomer: Customer) {
-    return this.http.post<Customer>('http://localhost:3000/customers/add-customer', { customer: newCustomer });
+    return this.http.post<Customer>('/customers/add-customer', { customer: newCustomer });
   }
 
   removeCustomer(email: string) {
-    return this.http.delete('http://localhost:3000/customers/'+ email);
+    return this.http.delete('/customers/'+ email).subscribe((data) => {
+      let index;
+      for (var i = 0; i < this.allCustomers.length; i++) {
+        if (this.allCustomers[i].email == email) {
+          index = i;
+        }
+      }
+      this.allCustomers.splice(index,1);
+      this.customersSubject.next(this.allCustomers);
+    })
   }
 
   editCustomer(customer: Customer) {

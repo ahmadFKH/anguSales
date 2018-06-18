@@ -29,6 +29,7 @@ import { CompanyComponent } from './company/company.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
+import { ShowCompanyComponent } from './show-company/show-company.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
     CommentsComponent,
     CompanyComponent,
     DialogComponent,
-    UpdateDialogComponent
+    UpdateDialogComponent,
+    ShowCompanyComponent
     ],
   imports: [
     BrowserModule,

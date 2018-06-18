@@ -11,7 +11,7 @@
     
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+      <mat-cell *matCellDef="let element"><button mat-button color="primary" [routerLink] = "['show-company' , element.name]">{{element.name}}</button></mat-cell>
     </ng-container>
 
 

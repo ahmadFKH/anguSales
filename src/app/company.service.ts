@@ -23,15 +23,22 @@ export class CompanyService {
   }
 
   getCompanies() {
-    const objservble = this.http.get<Company[]>('http://localhost:3000/companies');
+    const objservble = this.http.get<Company[]>('/companies');
     objservble.subscribe((res) => {
       this.allCompanies = res;
       this.companiesSubject.next(this.allCompanies);
     });
   }
 
+  getCompany(name : string) {
+    const observble = this.http.get<Company>('/companies/' + name);
+    observble.subscribe((res) => {
+      this.companySubject.next(res);
+    });
+  }
+
   addCompany(newCompany : Company) {
-    return this.http.post<Company>('http://localhost:3000/companies/add-company', {company : newCompany});
+    return this.http.post<Company>('/companies/add-company', {company : newCompany});
   }
 
 }

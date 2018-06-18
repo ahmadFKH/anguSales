@@ -71,6 +71,20 @@ router.get('/', (req, res) => {
 })
 })
 
+router.get('/:name', (req, res) => {
+    let companyName = req.params.name;
+    Company.find({
+        where: {
+            name : companyName
+        }
+    }).then ((data) => {
+        res.send(JSON.stringify(data));
+    }).catch(err => {
+        console.log(err);
+        throw err;
+    })
+})
+
 router.post('/add-company', (req, res) => {
     var newCompany = req.body.company;
     //console.log("------------" + newCustomer);

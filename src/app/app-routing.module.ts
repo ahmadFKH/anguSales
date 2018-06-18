@@ -5,13 +5,15 @@ import { CustomersComponent } from './customers/customers.component'
 import { CompanyComponent } from './company/company.component'
 import { AddCustomerComponent } from './add-customer/add-customer.component'
 import { CustomerComponent } from './customer/customer.component'
+import { ShowCompanyComponent } from './show-company/show-company.component'
 
 
 const routes: Routes = [
   { path: '', component: CustomersComponent},
   { path: 'add-customer', component: AddCustomerComponent },
   { path: 'customer/:email', component: CustomerComponent},
-  { path: 'company', component: CompanyComponent}
+  { path: 'company', component: CompanyComponent},
+  { path: 'company/show-company/:name', component: ShowCompanyComponent}
 ];
 
 @NgModule({

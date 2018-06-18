@@ -110,4 +110,18 @@ router.post('/add-comment', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+    var commentID = req.params.id;
+    Comment.destroy({
+        where: {
+            comment_id: commentID
+        }
+    }).then((data) => {
+        res.send(JSON.stringify(data));
+    }), (err) => {
+        console.error(err);
+        throw err;
+    }
+})
+
   module.exports = router;

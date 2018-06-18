@@ -16,14 +16,18 @@ export class CommentService {
    }
 
   getComments(email: string) {
-    const observble = this.http.get<Comment[]>('http://localhost:3000/comments/' + email);
+    const observble = this.http.get<Comment[]>('/comments/' + email);
     observble.subscribe((res) => {
       this.commentsSubject.next(res);
   })
   }
   
   addComment(newComment: Comment) {
-    return this.http.post<Comment>('http://localhost:3000/comments/add-comment', { comment: newComment })    
+    return this.http.post<Comment>('/comments/add-comment', { comment: newComment })    
+  }
+
+  deleteComment(id : string) {
+    return this.http.delete<Comment>('/comments/'+ id);    
   }
 
 }

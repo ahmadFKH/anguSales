@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 
 // Set our api routes
-app.use('/customers', customersRoutes);
+app.use('/user', customersRoutes);
 app.use('/companies', companiesRoutes);
 app.use('/comments', commentsRoutes);
 

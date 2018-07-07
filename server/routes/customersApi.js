@@ -95,9 +95,6 @@ router.post('/add-customer', (req, res) => {
 
 router.delete('/:email', (req, res) => {
     var customerEmail = req.params.email;
-    // console.log('....................................');
-    // console.log(customerEmail);
-    // console.log('....................................');
     Comment.destroy({
         where: {
             customer_email: customerEmail

@@ -7,7 +7,7 @@ class DA {
             host: 'us-cdbr-iron-east-04.cleardb.net',
             username: 'bee9b5de84e784',
             password: '0576c4cb',
-            database: 'anguSales',
+            database: 'heroku_69dde057fe379a0',
             dialect: 'mysql',
             operatorsAliases: false, // prevent string deprication
             pool: { // You can read about the pool in the documentation

@@ -16,15 +16,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-mongoose.connect(process.env.CONNECTION_STRING);
-
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
 
 // Set our api routes
-app.use('/user', customersRoutes);
+app.use('/customers', customersRoutes);
 app.use('/companies', companiesRoutes);
 app.use('/comments', commentsRoutes);
 

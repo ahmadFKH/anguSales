@@ -6,57 +6,6 @@ const Company = require('../dataAccess/company');
 const Comment = require('../dataAccess/comments');
 
 
-// let CUSTOMERS = JSON.stringify([
-//     {
-//       "firstName": "Heidi",
-//       "lastName": "Schwartz",
-//       "company_name": "TSUNAMIA",
-//       "email": "heidi.schwartz@oceanica.com",
-//       "phone": "(822) 471-2513"
-//     },
-//     {
-//       "firstName": "Buchanan",
-//       "lastName": "Flynn",
-//       "company_name": "TSUNAMIA",
-//       "email": "buchanan.flynn@quizka.tv",
-//       "phone": "(907) 526-3826"
-//     },
-//     {
-//       "firstName": "Nanette",
-//       "lastName": "Mcgowan",
-//       "company_name": "TSUNAMIA",
-//       "email": "nanette.mcgowan@plasmosis.io",
-//       "phone": "(990) 468-2024"
-//     },
-//     {
-//       "firstName": "Phoebe",
-//       "lastName": "Burns",
-//       "company_name": "UPLINX",
-//       "email": "phoebe.burns@strozen.biz",
-//       "phone": "(938) 461-3823"
-//     },
-//     {
-//       "firstName": "Frost",
-//       "lastName": "Frank",
-//       "company_name": "UPLINX",
-//       "email": "frost.frank@extrawear.me",
-//       "phone": "(964) 481-3219"
-//     }
-//   ]);
-// CUSTOMERS = JSON.parse(CUSTOMERS);
-
-// for(var i = 0; i < CUSTOMERS.length; i++) {
-//     Customer.create(CUSTOMERS[i])
-//     .then((data) => {
-//         console.log(data);
-//     }) 
-//     .catch(function(err) {
-//         // print the error details
-//         console.error(err);
-//     });
-// }
-
-
 router.get('/', (req, res) => {
     Customer.findAll({ include: [Company] }).then(data => {
         //console.log(data);

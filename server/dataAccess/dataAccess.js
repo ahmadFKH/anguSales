@@ -3,11 +3,8 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 class DA {
     constructor() {
-        this.sequelize = new Sequelize({
+        this.sequelize = new Sequelize('heroku_69dde057fe379a0','bee9b5de84e784', '0576c4cb', {
             host: 'us-cdbr-iron-east-04.cleardb.net',
-            username: 'bee9b5de84e784',
-            password: '0576c4cb',
-            database: 'heroku_69dde057fe379a0',
             dialect: 'mysql',
             operatorsAliases: false, // prevent string deprication
             pool: { // You can read about the pool in the documentation

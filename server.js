@@ -39,7 +39,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!')
 })
 
-const port = process.env.PORT || '3000';
+const port = process.env.CLEARDB_DATABASE_URL || '3000';
 app.set('port', port);
 
 /**

@@ -63,7 +63,7 @@ c
       phone : customer.phone,
       company_name : customer.company_name
     }
-    return this.http.put<Customer>('http://localhost:3000/customers/' + customer.email, {customer : customerObject});
+    return this.http.put<Customer>('/customers/' + customer.email, {customer : customerObject});
   }
 
 }

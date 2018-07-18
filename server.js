@@ -39,7 +39,8 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!')
 })
 
-const port = process.env.PORT || '3000';
+//const port = process.env.PORT || '3000';
+const port = 'mysql://bee9b5de84e784:0576c4cb@us-cdbr-iron-east-04.cleardb.net/heroku_69dde057fe379a0?reconnect=true';
 app.set('port', port);
 
 /**

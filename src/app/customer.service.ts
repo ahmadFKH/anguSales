@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class CustomerService {
-c
+  c
   public allCustomers: Customer[];
   public customersUpdate: Observable<Customer[]>;
   public customersSubject: Subject<Customer[]>;
@@ -30,7 +30,7 @@ c
       this.customersSubject.next(this.allCustomers);
     });
   }
-  getCustomersByCompany(name : string) {
+  getCustomersByCompany(name: string) {
     return this.http.get<Customer[]>('/customers/findByCompany/' + name);
 
   }
@@ -46,24 +46,26 @@ c
   }
 
   removeCustomer(email: string) {
-    return this.http.delete('/customers/'+ email).subscribe((data) => {
+    return this.http.delete('/customers/' + email).subscribe((data) => {
       let index;
       for (var i = 0; i < this.allCustomers.length; i++) {
         if (this.allCustomers[i].email == email) {
           index = i;
         }
       }
-      this.allCustomers.splice(index,1);
+      this.allCustomers.splice(index, 1);
       this.customersSubject.next(this.allCustomers);
     })
   }
 
   editCustomer(customer: Customer) {
     let customerObject = {
-      phone : customer.phone,
-      company_name : customer.company_name
+      phone: customer.phone,
+      company_name: customer.company_name
     }
-    return this.http.put<Customer>('/customers/' + customer.email, {customer : customerObject});
-  }
+    this.http.put<Customer[]>('/customers/' + customer.email, { customer: customerObject }).subscribe(data => {
+      this.customersSubject.next(data);
+    })
 
+  }
 }

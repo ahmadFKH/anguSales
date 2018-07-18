@@ -44,11 +44,12 @@ export class CustomersComponent {
       data: customer
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.customerService.editCustomer(result).subscribe(() => {
-        this.setCustomers();
+      this.customerService.editCustomer(result);
+      this.customerService.customersUpdate.subscribe(data => {
+        this.dataSource = new MatTableDataSource(data);  
       })
-    });
-  }
+      })
+    };
 
   setCustomers() {
     this.customerService.getCustomers();

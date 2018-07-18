@@ -128,7 +128,10 @@ router.put('/:email', (req, res) => {
         data.company_name = req.body.customer.company_name
         data.phone = req.body.customer.phone
         data.save().then((result) => {
-            res.send(JSON.stringify(result));
+            Customer.findAll({ include: [Company] }).then(data => {
+                //console.log(data);
+                res.send(JSON.stringify(data));
+            })
         })
     })
 })
